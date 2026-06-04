@@ -1,0 +1,91 @@
+<div class="container mt-5">
+
+  <!-- Page Header -->
+  <div class="d-flex align-items-center mb-4">
+    <i class="bi bi-grid-1x2-fill fs-3 text-primary me-2"></i>
+    <h3 class="fw-bold mb-0">Add Restaurant Table</h3>
+  </div>
+
+  <!-- Card Wrapper -->
+  <div class="card border-0 shadow-lg rounded-4 p-4 table-form-card">
+
+    <form (ngSubmit)="saveTable()" #form="ngForm">
+
+      <div class="row">
+
+        <!-- Table Number -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-hash text-primary me-2"></i>
+            Table Number
+          </label>
+          <input type="number"
+                 class="form-control form-control-lg rounded-3"
+                 [(ngModel)]="table.tableNumber"
+                 name="tableNumber"
+                 required>
+        </div>
+
+        <!-- Capacity -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-people-fill text-success me-2"></i>
+            Capacity
+          </label>
+          <input type="number"
+                 class="form-control form-control-lg rounded-3"
+                 [(ngModel)]="table.capacity"
+                 name="capacity"
+                 required>
+        </div>
+
+        <!-- Location Zone -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+            Location Zone
+          </label>
+          <input type="text"
+                 class="form-control form-control-lg rounded-3"
+                 [(ngModel)]="table.locationZone"
+                 name="locationZone"
+                 required>
+        </div>
+
+        <!-- Status -->
+        <div class="col-md-6 mb-4">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-info-circle-fill text-danger me-2"></i>
+            Status
+          </label>
+          <select class="form-select form-select-lg rounded-3"
+                  [(ngModel)]="table.status"
+                  name="status">
+            <option value="Available">Available</option>
+            <option value="Occupied">Occupied</option>
+            <option value="Reserved">Reserved</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-end mt-3">
+        <button type="submit"
+                class="btn btn-primary px-4 py-2 rounded-pill shadow-sm"
+                [disabled]="form.invalid">
+          <i class="bi bi-check-circle me-2"></i>
+          Save Table
+        </button>
+        <a routerLink="/tables"
+            class="btn btn-secondary ms-2 px-4 py-2 rounded-pill shadow-sm">
+            <i class="bi bi-x-circle me-2"></i>
+            Cancel
+            </a>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

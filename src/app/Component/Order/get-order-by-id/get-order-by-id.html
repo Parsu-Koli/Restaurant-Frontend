@@ -1,0 +1,106 @@
+<div class="container mt-5" *ngIf="order">
+
+  <div class="card shadow-lg border-0 rounded-4">
+
+    <!-- Header -->
+    <div class="card-header bg-white border-0 p-4 d-flex justify-content-between align-items-center">
+
+      <div>
+        <h3 class="fw-bold mb-1">Order #{{ order.id }}</h3>
+        <small class="text-muted">
+          {{ order.createdAt | date:'medium' }}
+        </small>
+      </div>
+
+      <div>
+
+        <span class="badge px-4 py-2 rounded-pill me-2" [ngClass]="{
+            'bg-warning text-dark': order.status === 'Pending',
+            'bg-primary': order.status === 'Active',
+            'bg-success': order.status === 'Completed',
+            'bg-danger': order.status === 'Cancelled'
+          }">
+          {{ order.status }}
+        </span>
+
+        <!-- UPDATE BUTTON -->
+        <button class="btn btn-warning ms-2" [routerLink]="['/update-order', order.id]">
+          <i class="bi bi-pencil"></i> Update
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="card-body p-4">
+
+      <!-- Customer & Table Section -->
+      <div class="row mb-4">
+
+        <!-- Customer Info -->
+        <div class="col-md-6">
+          <h5 class="fw-semibold mb-3 border-bottom pb-2">Customer Information</h5>
+
+          <p class="mb-1"><strong>Name:</strong> {{ order.customer.fullName }}</p>
+          <p class="mb-1"><strong>Email:</strong> {{ order.customer.email }}</p>
+          <p class="mb-1"><strong>Phone:</strong> {{ order.customer.phoneNumber }}</p>
+          <p class="mb-0"><strong>Address:</strong> {{ order.customer.address }}</p>
+        </div>
+
+        <!-- Table Info -->
+        <div class="col-md-6">
+          <h5 class="fw-semibold mb-3 border-bottom pb-2">Table Details</h5>
+
+          <p class="mb-1"><strong>Table Number:</strong> {{ order.restaurantTable.tableNumber }}</p>
+          <p class="mb-1"><strong>Capacity:</strong> {{ order.restaurantTable.capacity }}</p>
+          <p class="mb-0"><strong>Zone:</strong> {{ order.restaurantTable.locationZone }}</p>
+        </div>
+
+      </div>
+
+      <!-- Order Items -->
+      <div class="mb-4">
+        <h5 class="fw-semibold mb-3 border-bottom pb-2">Order Items</h5>
+
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Menu Item ID</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of order.orderItems">
+                <td>{{ item.menuItemId }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.price }}</td>
+                <td>₹{{ item.quantity * item.price }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Payment Section -->
+      <div class="mb-4">
+        <h5 class="fw-semibold mb-3 border-bottom pb-2">Payment Status</h5>
+
+        <span class="badge px-4 py-2 rounded-pill" [ngClass]="order.payments.length > 0 ? 'bg-success' : 'bg-danger'">
+          {{ order.payments.length > 0 ? 'Paid' : 'Not Paid' }}
+        </span>
+      </div>
+
+      <!-- Total -->
+      <div class="text-end">
+        <h4 class="fw-bold text-success">
+          Total Amount: ₹{{ order.totalPrice }}
+        </h4>
+      </div>
+
+    </div>
+  </div>
+
+</div>

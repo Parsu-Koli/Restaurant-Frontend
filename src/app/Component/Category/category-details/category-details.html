@@ -1,0 +1,73 @@
+<div class="container mt-5" *ngIf="category as cat">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg p-4 rounded-4">
+
+                <h2 class="text-center text-primary mb-4">
+                    📂 Category Details
+                </h2>
+
+                <!-- VIEW MODE -->
+                <div *ngIf="!isEditMode">
+
+                    <div class="mb-3">
+                        <label class="fw-bold">ID</label>
+                        <div class="form-control bg-light">
+                            {{ cat.id }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="fw-bold">Name</label>
+                        <div class="form-control bg-light">
+                            {{ cat.name }}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-warning" (click)="enableEdit()">
+                            Edit
+                        </button>
+                         <button class="btn btn-danger" (click)="deleteCategory()">
+                            Delete
+                        </button>
+                        <button class="btn btn-secondary" (click)="goBack()">
+                            Back
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- EDIT MODE -->
+                <div *ngIf="isEditMode">
+
+                    <div class="mb-3">
+                        <label class="fw-bold">Category Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="category!.name">
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <button class="btn btn-warning" (click)="enableEdit()">
+                            Edit
+                        </button>
+
+                       
+
+                        <button class="btn btn-secondary" (click)="goBack()">
+                            Back
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

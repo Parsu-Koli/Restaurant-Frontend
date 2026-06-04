@@ -1,0 +1,100 @@
+<div class="container-fluid menu-page py-4">
+
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+
+    <div class="d-flex align-items-center">
+      <i class="bi bi-card-list fs-3 text-primary me-2"></i>
+      <h2 class="fw-bold mb-0">Menu Management</h2>
+    </div>
+
+    <a routerLink="/create-menu" class="btn btn-primary rounded-pill px-4">
+      <i class="bi bi-plus-lg me-2"></i>
+      Create Menu
+    </a>
+
+  </div>
+
+
+  <!-- Menu Card -->
+  <div class="menu-card">
+
+    <div class="menu-scroll">
+
+      <table class="table table-hover align-middle mb-0">
+
+        <!-- Table Header -->
+        <thead class="sticky-header">
+          <tr class="text-uppercase small">
+            <th style="width:100px;">Image</th>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th class="text-center" style="width:140px;">Action</th>
+          </tr>
+        </thead>
+
+
+        <!-- Table Body -->
+        <tbody>
+
+          <tr *ngFor="let item of menuItems">
+
+            <!-- Image -->
+            <td>
+              <div class="menu-img-wrapper">
+                <img [src]="'https://localhost:44398' + item.imageUrl"
+                     class="menu-img"
+                     alt="Food Image">
+              </div>
+            </td>
+
+            <!-- Item -->
+            <td>
+              <div class="fw-semibold">{{ item.name }}</div>
+              <small class="text-muted">ID: {{ item.id }}</small>
+            </td>
+
+            <!-- Category -->
+            <td>
+              <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">
+                {{ item.categoryId }}
+              </span>
+            </td>
+
+            <!-- Price -->
+            <td class="fw-bold text-success">
+              ₹ {{ item.price }}
+            </td>
+
+            <!-- Status -->
+            <td>
+              <span class="badge rounded-pill px-3 py-2"
+                    [ngClass]="item.isAvailable 
+                      ? 'bg-success-subtle text-success'
+                      : 'bg-danger-subtle text-danger'">
+                {{ item.isAvailable ? 'Available' : 'Unavailable' }}
+              </span>
+            </td>
+
+            <!-- Action -->
+            <td class="text-center">
+              <a [routerLink]="['/menu', item.id]"
+                 class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                <i class="bi bi-eye me-1"></i>
+                View
+              </a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

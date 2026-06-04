@@ -1,0 +1,158 @@
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+
+    <h3 class="mb-4 text-center">Create New Order</h3>
+
+    <!-- ================= TABLE SECTION ================= -->
+    <div class="mb-4">
+      <label class="form-label fw-bold">
+        Table ID <span class="text-danger">*</span>
+      </label>
+      <input type="number" class="form-control" [(ngModel)]="order.tableId" name="tableId" placeholder="Enter Table ID">
+    </div>
+
+    <hr>
+
+    <!-- ================= CUSTOMER SECTION ================= -->
+    <h5 class="mb-3">Customer Information</h5>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">
+          Full Name <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="order.customerDto.fullName" name="fullName"
+          placeholder="Enter Full Name">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Email</label>
+        <input type="email" class="form-control" [(ngModel)]="order.customerDto.email" name="email"
+          placeholder="Enter Email">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Phone Number</label>
+        <input type="text" class="form-control" [(ngModel)]="order.customerDto.phoneNumber" name="phoneNumber"
+          placeholder="Enter Phone Number">
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label fw-bold">Address</label>
+        <input type="text" class="form-control" [(ngModel)]="order.customerDto.address" name="address"
+          placeholder="Enter Address">
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- ================= ORDER ITEMS SECTION ================= -->
+    <h5 class="mb-3">Add Order Items</h5>
+
+    <div class="row align-items-end">
+
+      <!-- 🔍 SEARCH -->
+      <div class="col-md-5 mb-3 position-relative">
+        <label class="form-label fw-bold">Search Menu Item</label>
+
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="onSearchChange()"
+          placeholder="Search food (e.g. pizza, burger)">
+
+        <!-- Dropdown Results -->
+        <ul class="list-group position-absolute w-100" *ngIf="searchResults.length > 0"
+          style="z-index:1000; max-height:200px; overflow:auto;">
+
+          <li class="list-group-item list-group-item-action" *ngFor="let item of searchResults"
+            (click)="selectItem(item)">
+
+            <div class="d-flex justify-content-between">
+              <span>{{ item.name }}</span>
+              <span class="text-muted">₹{{ item.price }}</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- No results -->
+        <div *ngIf="!isLoading && searchResults.length === 0 && searchTerm.length >= 2 && !selectedItem">
+          <small class="text-danger">No items found</small>
+        </div>
+      </div>
+
+      <!-- QUANTITY -->
+      <div class="col-md-5 mb-3">
+        <label class="form-label fw-bold">Quantity</label>
+        <input type="number" class="form-control" [(ngModel)]="quantity" placeholder="Enter Quantity">
+      </div>
+
+      <!-- ADD BUTTON -->
+      <div class="col-md-2 mb-3 d-grid">
+        <button type="button" class="btn btn-outline-primary" (click)="addItem()"
+          [disabled]="!selectedItem || !quantity">
+          Add
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ================= ADDED ITEMS LIST ================= -->
+    <div *ngIf="order.orderItems.length > 0" class="mt-3">
+      <h6 class="fw-bold">Added Items</h6>
+
+      <table class="table table-bordered table-striped mt-2">
+        <thead class="table-light">
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th style="width: 180px;">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of order.orderItems; let i = index">
+
+            <!-- ITEM -->
+            <td>{{ item.menuItemName || item.menuItemId }}</td>
+
+            <!-- QTY -->
+            <td>{{ item.quantity }}</td>
+
+            <!-- ACTIONS -->
+            <td>
+              <div class="input-group input-group-sm justify-content-center" style="max-width: 140px;">
+
+                <!-- ➖ Decrease -->
+                <button class="btn btn-outline-danger" type="button" (click)="decreaseQty(i)">
+                  <i class="bi bi-dash"></i>
+                </button>
+
+                <!-- Quantity Display -->
+                <input type="text" class="form-control text-center fw-bold" [value]="item.quantity" readonly>
+
+                <!-- ➕ Increase -->
+                <button class="btn btn-outline-success" type="button" (click)="increaseQty(item)">
+                  <i class="bi bi-plus"></i>
+                </button>
+
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 💰 TOTAL -->
+
+    </div>
+
+    <hr>
+
+    <!-- ================= SUBMIT BUTTON ================= -->
+    <div class="d-grid mt-4">
+      <button type="button" class="btn btn-success btn-lg" (click)="submitOrder()"
+        [disabled]="!order.customerDto.fullName || order.orderItems.length === 0">
+        Submit Order
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0d6efd, #084298);
+  color: white;
+  transition: 0.3s ease;
+}
+
+/* Header */
+.sidebar-header {
+  text-align: center;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+  color: rgba(255, 255, 255, 0.85);
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.sidebar-link i {
+  font-size: 1rem;
+}
+
+/* Hover Effect */
+.sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Active Link */
+.sidebar-link.active {
+  background-color: #ffffff;
+  color: #0d6efd !important;
+  font-weight: 600;
+}
+
+/* Optional subtle shadow */
+.sidebar {
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+}

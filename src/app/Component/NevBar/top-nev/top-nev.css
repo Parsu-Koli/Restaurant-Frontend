@@ -1,0 +1,33 @@
+.dashboard-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+}
+
+/* Notification icon */
+.notification-icon {
+  cursor: pointer;
+}
+
+/* Notification badge */
+.notification-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #dc3545;
+  color: white;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+/* Dropdown style */
+.dropdown-menu {
+  min-width: 180px;
+}
+
+/* Hover effect */
+.dropdown-item:hover {
+  background: #f8f9fa;
+}

@@ -1,0 +1,15 @@
+.inner-scroll-wrapper {
+  height: calc(100vh - 80px); /* adjust if navbar exists */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Optional: smoother admin style */
+.inner-scroll-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.inner-scroll-wrapper::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}

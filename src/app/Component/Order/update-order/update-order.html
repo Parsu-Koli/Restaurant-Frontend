@@ -1,0 +1,95 @@
+<div class="container mt-5">
+    <div class="card shadow p-4">
+
+        <h3 class="mb-4 text-center">Update Order</h3>
+
+        <!-- TABLE -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Table ID</label>
+            <input type="number" class="form-control" [(ngModel)]="order.tableId">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Table ID</label>
+            <input type="number" class="form-control" [(ngModel)]="order.orderId">
+        </div>
+
+        <!-- STATUS -->
+        <div class="mb-3">
+            <label class="form-label fw-bold">Status</label>
+            <select class="form-control" [(ngModel)]="order.status">
+                <option value="Active">Active</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+
+        <hr>
+
+        <!-- ADD ITEMS -->
+        <h5>Add Items</h5>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <input type="number" class="form-control" placeholder="Menu Item ID" [(ngModel)]="menuItemId">
+            </div>
+
+            <div class="col-md-5">
+                <input type="number" class="form-control" placeholder="Quantity" [(ngModel)]="quantity">
+            </div>
+
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" (click)="addItem()">Add</button>
+            </div>
+
+        </div>
+
+        <!-- ITEM LIST -->
+        <table class="table table-bordered mt-4" *ngIf="order?.orderItems?.length">
+
+            <thead>
+                <tr>
+                    <th>Menu Item ID</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of order.orderItems; let i = index">
+                    <td>{{item.menuItemId}}</td>
+                    <td>
+
+                        <div class="d-flex align-items-center gap-2">
+
+                            <button class="btn btn-sm btn-secondary" (click)="decreaseQty(i)">
+                                -
+                            </button>
+
+                            <span class="fw-bold">{{item.quantity}}</span>
+
+                            <button class="btn btn-sm btn-secondary" (click)="increaseQty(i)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="removeItem(i)">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="mt-4 d-grid">
+            <button class="btn btn-success btn-lg" (click)="updateOrder()">
+                Update Order
+            </button>
+        </div>
+
+    </div>
+</div>

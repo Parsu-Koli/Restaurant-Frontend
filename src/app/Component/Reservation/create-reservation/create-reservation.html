@@ -1,0 +1,76 @@
+<div class="container mt-4">
+
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Create Reservation</h4>
+    </div>
+
+    <div class="card-body">
+
+      <form (ngSubmit)="submitReservation()">
+
+        <!-- Customer ID -->
+        <div class="mb-3">
+          <label class="form-label">Customer ID</label>
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="reservation.customerId"
+                 name="customerId"
+                 required>
+        </div>
+
+        <!-- Table ID -->
+        <div class="mb-3">
+          <label class="form-label">Table ID</label>
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="reservation.tableId"
+                 name="tableId"
+                 required>
+        </div>
+
+        <!-- Guests -->
+        <div class="mb-3">
+          <label class="form-label">Number Of Guests</label>
+          <input type="number"
+                 class="form-control"
+                 [(ngModel)]="reservation.numberOfGuests"
+                 name="numberOfGuests"
+                 required>
+        </div>
+
+        <!-- Reserved Date -->
+        <div class="mb-3">
+          <label class="form-label">Reservation Date</label>
+          <input type="datetime-local"
+                 class="form-control"
+                 [(ngModel)]="reservation.reservedDate"
+                 name="reservedDate"
+                 required>
+        </div>
+
+        <!-- Status -->
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <select class="form-select"
+                  [(ngModel)]="reservation.status"
+                  name="status">
+
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Cancelled">Cancelled</option>
+
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">
+          Create Reservation
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

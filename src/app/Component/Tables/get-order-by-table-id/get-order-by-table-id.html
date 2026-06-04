@@ -1,0 +1,97 @@
+<div class="container mt-5" *ngIf="orders">
+
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary">
+      <i class="bi bi-receipt-cutoff me-2"></i>
+      Order Details
+    </h2>
+
+    <span class="badge px-4 py-2 fs-6 rounded-pill"
+          [ngClass]="{
+            'bg-success': orders.status === 'Completed',
+            'bg-danger': orders.status === 'Cancelled',
+            'bg-warning text-dark': orders.status === 'Active'
+          }">
+      {{ orders.status }}
+    </span>
+  </div>
+
+  <!-- Order Info Card -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Order ID</p>
+          <h5 class="fw-semibold">#{{ orders.id }}</h5>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Customer Name</p>
+          <h5 class="fw-semibold">{{ orders.customerName }}</h5>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Table Number</p>
+          <h5 class="fw-semibold">Table {{ orders.tableNumber }}</h5>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Customer ID</p>
+          <h6>{{ orders.customerId }}</h6>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Created At</p>
+          <h6>{{ orders.createdAt | date:'medium' }}</h6>
+        </div>
+
+        <div class="col-md-4">
+          <p class="text-muted mb-1">Total Price</p>
+          <h4 class="text-success fw-bold">₹ {{ orders.totalPrice }}</h4>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Items Section -->
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-light fw-semibold">
+      <i class="bi bi-list-ul me-2"></i>
+      Ordered Items
+    </div>
+
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table align-middle mb-0 table-hover">
+
+          <thead class="table-light">
+            <tr>
+              <th>Item Name</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-end">Price (₹)</th>
+              <th class="text-end">Total (₹)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let item of orders.items">
+              <td class="fw-semibold">{{ item.menuItemName }}</td>
+              <td class="text-center">{{ item.quantity }}</td>
+              <td class="text-end">{{ item.price }}</td>
+              <td class="text-end fw-semibold">
+                {{ item.quantity * item.price }}
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

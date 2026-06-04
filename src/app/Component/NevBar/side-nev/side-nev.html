@@ -1,0 +1,67 @@
+<div class="sidebar d-flex flex-column p-3">
+
+  <!-- Logo -->
+  <div class="sidebar-header mb-4">
+    <h4 class="fw-bold text-white mb-0">
+      <i class="bi bi-cup-hot-fill me-2"></i>
+      Restaurant
+    </h4>
+    <small class="text-white-50">Admin Panel</small>
+  </div>
+
+  <hr class="text-white opacity-25">
+
+  <!-- Navigation -->
+  <ul *ngIf="isLoggedIn" class="nav nav-pills flex-column gap-2 mt-3">
+
+    <li class="nav-item">
+      <a routerLink="/dashboard" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-speedometer2 me-2"></i>
+        Dashboard
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/tables" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-table me-2"></i>
+        Tables
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/orders" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-receipt me-2"></i>
+        Orders
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/reservations" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-calendar-check me-2"></i>
+        Reservations
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/menu" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-list-ul me-2"></i>
+        Menu
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/customers" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-people me-2"></i>
+        Customers
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a routerLink="/category" routerLinkActive="active" class="nav-link sidebar-link">
+        <i class="bi bi-tags me-2"></i>
+        Categories
+      </a>
+    </li>
+  </ul>
+
+</div>

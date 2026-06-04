@@ -1,0 +1,147 @@
+.stat-card {
+  border-radius: 15px;
+  padding: 15px;
+  transition: 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-circle {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gradient Colors */
+.bg-blue {
+  background: linear-gradient(135deg, #4e73df, #224abe);
+}
+
+.bg-orange {
+  background: linear-gradient(135deg, #ff7b54, #ff512f);
+}
+
+.bg-yellow {
+  background: linear-gradient(135deg, #f6c23e, #e0a800);
+}
+
+.bg-green {
+  background: linear-gradient(135deg, #1cc88a, #13855c);
+}
+
+/* Icon Colors */
+.text-blue { color: #224abe; }
+.text-orange { color: #ff512f; }
+.text-yellow { color: #e0a800; }
+.text-green { color: #13855c; }
+
+
+/* Scroll only inside content area */
+.top-items-scroll {
+  max-height: 350px;   /* adjust height as you like */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* Smooth modern scrollbar */
+.top-items-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.top-items-scroll::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+.top-items-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Item Card */
+.top-item-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+.sellItem{
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.top-item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* Image Fit Properly */
+.image-wrapper {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Order Card */
+.order-card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #f1f1f1;
+  transition: 0.25s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+/* Customer box */
+.customer-box {
+  background: #f8f9fa;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+/* Items */
+.item-row {
+  border-bottom: 1px dashed #eee;
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+/* Payment box */
+.payment-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+/* Subtle badges (Bootstrap 5.3 style mimic) */
+.bg-success-subtle {
+  background-color: #d1fae5;
+}
+
+.bg-warning-subtle {
+  background-color: #fef3c7;
+}
+
+.text-success {
+  color: #059669 !important;
+}
+
+.text-warning {
+  color: #d97706 !important;
+}

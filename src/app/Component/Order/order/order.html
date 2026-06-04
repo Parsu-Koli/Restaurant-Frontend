@@ -1,0 +1,95 @@
+<div class="container mt-5">
+
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex align-items-center">
+      <i class="bi bi-receipt-cutoff fs-3 text-primary me-2"></i>
+      <h2 class="fw-bold mb-0">All Orders</h2>
+    </div>
+    <span class="badge bg-dark-subtle text-dark px-3 py-2 rounded-pill">
+      Total Orders: {{ orders.length }}
+    </span>
+    <a routerLink="/create-order" class="btn btn-primary">
+      <i class="bi bi-pencil me-2"></i>
+      Create Order
+    </a>
+  </div>
+
+  <!-- Scrollable Container -->
+  <div class="orders-scroll p-4">
+
+    <div *ngFor="let order of orders"
+         class="order-card card border-0 mb-4 rounded-4" [routerLink]="['/get-order-by-id', order.id]">
+
+      <div class="card-body p-4">
+
+        <!-- Top Row -->
+        <div class="d-flex justify-content-between align-items-start mb-3">
+
+          <div>
+            <h5 class="fw-bold mb-1">
+              <i class="bi bi-hash text-secondary me-2"></i>
+              Order #{{ order.id }}
+            </h5>
+
+            <small class="text-muted">
+              <i class="bi bi-calendar-event me-1"></i>
+              {{ order.createdAt | date:'medium' }}
+            </small>
+          </div>
+
+          <div class="text-end">
+
+            <!-- Payment Badge -->
+            <span class="badge px-3 py-2 rounded-pill mb-2"
+                  [ngClass]="order.isPaid ? 'bg-success' : 'bg-danger'">
+              <i class="bi"
+                 [ngClass]="order.isPaid ? 'bi-check-circle' : 'bi-x-circle'"></i>
+              {{ order.isPaid ? 'Paid' : 'Unpaid' }}
+            </span>
+
+            <br>
+
+            <!-- Status Badge -->
+            <span class="badge px-3 py-2 rounded-pill"
+                  [ngClass]="{
+                    'bg-warning text-dark': order.status === 'Pending',
+                    'bg-primary': order.status === 'Active',
+                    'bg-success': order.status === 'Completed',
+                    'bg-danger': order.status === 'Cancelled'
+                  }">
+              {{ order.status }}
+            </span>
+
+          </div>
+
+        </div>
+
+        <hr class="my-3">
+
+        <!-- Order Info Row -->
+        <div class="row text-muted">
+
+          <div class="col-md-4 mb-2">
+            <i class="bi bi-table text-primary me-2"></i>
+            <strong>Table:</strong> {{ order.tableNumber }}
+          </div>
+
+          <div class="col-md-4 mb-2">
+            <i class="bi bi-person text-info me-2"></i>
+            <strong>Customer:</strong> {{ order.customerName }}
+          </div>
+
+          <div class="col-md-4 mb-2 text-md-end">
+            <h5 class="fw-bold text-success mb-0">
+              ₹{{ order.totalPrice }}
+            </h5>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

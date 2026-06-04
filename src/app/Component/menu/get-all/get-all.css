@@ -1,0 +1,92 @@
+/* Page Background */
+.menu-page{
+  height:100vh;
+  overflow:hidden;
+  background:#f8f9fa;
+}
+
+
+/* Card Container */
+.menu-card{
+  height:calc(100vh - 140px);
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 10px 28px rgba(0,0,0,0.06);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+
+/* Scrollable Table Area */
+.menu-scroll{
+  flex:1;
+  overflow-y:auto;
+  padding:5px 10px;
+}
+
+
+/* Sticky Header */
+.sticky-header th{
+  position:sticky;
+  top:0;
+  background:#fff;
+  z-index:10;
+  font-weight:600;
+  color:#6c757d;
+  border-bottom:2px solid #f1f1f1;
+}
+
+
+/* Table Row Style */
+.table td{
+  padding:16px;
+  border-top:1px solid #f1f3f5;
+}
+
+.table-hover tbody tr:hover{
+  background:#f6f8fb;
+}
+
+
+/* Image Wrapper */
+.menu-img-wrapper{
+  width:70px;
+  height:70px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#f1f3f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+/* Image Style */
+.menu-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .3s ease;
+}
+
+
+/* Image Hover Animation */
+.menu-img-wrapper:hover .menu-img{
+  transform:scale(1.08);
+}
+
+
+/* Scrollbar */
+.menu-scroll::-webkit-scrollbar{
+  width:6px;
+}
+
+.menu-scroll::-webkit-scrollbar-thumb{
+  background:#cbd5e1;
+  border-radius:20px;
+}
+
+.menu-scroll::-webkit-scrollbar-thumb:hover{
+  background:#94a3b8;
+}

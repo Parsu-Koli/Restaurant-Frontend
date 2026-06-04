@@ -1,0 +1,108 @@
+<div class="container-fluid mt-4">
+
+  <!-- Page Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div class="d-flex align-items-center">
+      <i class="bi bi-people-fill fs-3 text-primary me-2"></i>
+      <h2 class="fw-bold mb-0">Customer Management</h2>
+    </div>
+
+    <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+      Total Customers: {{ customers.length }}
+    </span>
+
+  </div>
+
+  <!-- Card -->
+  <div class="card shadow border-0 rounded-4">
+
+    <div class="card-body p-0">
+
+      <div class="table-responsive">
+
+        <table class="table table-hover align-middle mb-0">
+
+          <!-- Table Head -->
+          <thead class="table-dark">
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+
+          <!-- Table Body -->
+          <tbody>
+
+            <tr *ngFor="let customer of customers">
+
+              <!-- ID -->
+              <td class="fw-semibold text-muted">
+                #{{customer.customerId}}
+              </td>
+
+              <!-- Name -->
+              <td>
+                <div class="d-flex align-items-center">
+
+                  <div class="avatar-circle me-2">
+                    {{customer.fullName.charAt(0)}}
+                  </div>
+
+                  <span class="fw-semibold">
+                    {{customer.fullName}}
+                  </span>
+
+                </div>
+              </td>
+
+              <!-- Email -->
+              <td class="text-muted">
+                <i class="bi bi-envelope me-1 text-secondary"></i>
+                {{customer.email}}
+              </td>
+
+              <!-- Phone -->
+              <td>
+                <i class="bi bi-telephone me-1 text-success"></i>
+                {{customer.phoneNumber}}
+              </td>
+
+              <!-- Address -->
+              <td class="text-muted">
+                {{customer.address}}
+              </td>
+
+              <!-- Date -->
+              <td>
+                {{customer.createdAt | date:'mediumDate'}}
+              </td>
+
+            </tr>
+
+            <!-- Empty State -->
+            <tr *ngIf="customers.length === 0">
+              <td colspan="6" class="text-center py-5 text-muted">
+
+                <i class="bi bi-person-x fs-2 d-block mb-2"></i>
+
+                No customers available
+
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
