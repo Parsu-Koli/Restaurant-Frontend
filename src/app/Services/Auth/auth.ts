@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class Auth {
 
-  private apiUrl = 'https://localhost:44398/api/User';
+  private apiUrl = 'https://restaurant-api-bk12.onrender.com/api/User';
   private TOKEN_KEY = 'token';
 
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
